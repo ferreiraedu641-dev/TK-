@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=1.5, user-scalable=yes">
-    <title>🔥 TK SENSI PRO - Gerador de Sensibilidade Free Fire</title>
+    <title>TK SENSI PRO | Gerador de Sensibilidade IA</title>
     <style>
         :root {
-            --bg: #06060c;
-            --bg-card: #0e0e16;
-            --bg-card2: #141420;
-            --accent: #ff5e1a;
-            --accent2: #ff7b3d;
-            --gold: #e0a800;
-            --gold-light: #ffd966;
-            --text: #eaeaea;
-            --text2: #b0b0c0;
-            --text3: #787890;
-            --border: #1c1c2a;
-            --border-active: #ff5e1a40;
-            --danger: #ff3b3b;
-            --success: #2ecc71;
-            --blue: #4d9eff;
-            --shadow-glow: 0 0 18px #ff5e1a15;
-            --shadow-card: 0 3px 14px rgba(0, 0, 0, 0.55);
-            --radius: 14px;
-            --radius-sm: 8px;
+            --bg: #060608;
+            --bg-card: #0c0c14;
+            --bg-card2: #111120;
+            --accent: #00AFFF;
+            --accent2: #0090dd;
+            --accent-glow: #00AFFF60;
+            --roxo: #7b4dff;
+            --gradiente-azul: linear-gradient(135deg, #00AFFF, #0090dd);
+            --gradiente-roxo: linear-gradient(135deg, #00AFFF, #7b4dff);
+            --text: #e8e8f0;
+            --text2: #b0b8c8;
+            --text3: #6b7288;
+            --border: #1a1a2e;
+            --border-glow: #00AFFF40;
+            --danger: #ff3b50;
+            --success: #00e676;
+            --shadow-glow: 0 0 30px #00AFFF20;
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.7);
+            --shadow-neon: 0 0 20px #00AFFF30, 0 0 60px #00AFFF10;
+            --radius: 18px;
+            --radius-sm: 10px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --base-font: 0.88rem;
         }
@@ -36,28 +38,29 @@
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, 'Rajdhani', sans-serif;
             background: var(--bg);
             color: var(--text);
             min-height: 100vh;
             overflow-x: hidden;
             font-size: var(--base-font);
             background-image:
-                radial-gradient(ellipse at 15% 15%, #ff5e1a06 0%, transparent 50%),
-                radial-gradient(ellipse at 85% 85%, #e0a80005 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 0%, #12121e 0%, transparent 70%);
+                radial-gradient(ellipse at 30% 10%, #00AFFF06 0%, transparent 55%),
+                radial-gradient(ellipse at 70% 90%, #7b4dff04 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 50%, #0a0a18 0%, transparent 80%);
+            letter-spacing: 0.2px;
         }
 
         /* ============ LOGIN OVERLAY ============ */
         .login-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(4, 4, 8, 0.98);
+            background: rgba(4, 4, 10, 0.97);
             z-index: 9999;
             display: flex;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(22px);
+            backdrop-filter: blur(30px);
             transition: opacity 0.5s, visibility 0.5s;
         }
         .login-overlay.hidden {
@@ -68,186 +71,177 @@
         .login-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px 26px;
-            width: 390px;
+            border-radius: 24px;
+            padding: 36px 28px;
+            width: 400px;
             max-width: 90vw;
-            box-shadow: var(--shadow-card), var(--shadow-glow);
+            box-shadow: var(--shadow-card), var(--shadow-neon);
             text-align: center;
-            position: relative;
             animation: floatIn 0.6s ease;
+            position: relative;
+        }
+        .login-box::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 25px;
+            padding: 1px;
+            background: linear-gradient(135deg, #00AFFF40, transparent 40%, #7b4dff30);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
         @keyframes floatIn {
             from {
                 opacity: 0;
-                transform: translateY(30px) scale(0.95);
+                transform: translateY(40px) scale(0.94);
             }
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
         }
-        .login-box .logo-icon {
-            font-size: 44px;
-            margin-bottom: 6px;
-            animation: pulse 2s infinite;
-            text-shadow: 0 0 22px #ff5e1a50;
+        .login-box .app-icon {
+            width: 80px;
+            height: 80px;
+            background: #0a0a0a;
+            border: 2px solid #00AFFF;
+            border-radius: 20px;
+            margin: 0 auto 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px #00AFFF40, 0 0 60px #00AFFF15;
+            animation: pulseIcon 2.5s infinite;
         }
-        @keyframes pulse {
+        @keyframes pulseIcon {
             0%,
             100% {
-                transform: scale(1);
-                opacity: 1;
+                box-shadow: 0 0 30px #00AFFF40, 0 0 60px #00AFFF15;
             }
             50% {
-                transform: scale(1.08);
-                opacity: 0.85;
+                box-shadow: 0 0 45px #00AFFF60, 0 0 80px #00AFFF25;
             }
         }
+        .app-icon .icon-tk {
+            font-size: 32px;
+            font-weight: 900;
+            color: #00AFFF;
+            text-shadow: 0 0 20px #00AFFF;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+        .app-icon .icon-sub {
+            font-size: 10px;
+            font-weight: 700;
+            color: #7b8aaa;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
         .login-box h2 {
-            font-size: 1.5em;
+            font-size: 1.6em;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--accent2), var(--gold-light));
+            background: linear-gradient(135deg, #00AFFF, #7b4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 4px;
-            letter-spacing: -0.4px;
+            letter-spacing: -0.5px;
         }
         .login-box .subtitle {
             color: var(--text3);
-            font-size: 0.78em;
-            margin-bottom: 24px;
-            letter-spacing: 1px;
+            font-size: 0.75em;
+            margin-bottom: 26px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
         .login-box .input-group {
             position: relative;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             text-align: left;
         }
         .login-box .input-group label {
             display: block;
-            font-size: 0.72em;
+            font-size: 0.7em;
             font-weight: 600;
             color: var(--text2);
-            margin-bottom: 4px;
-            letter-spacing: 0.5px;
+            margin-bottom: 5px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .login-box .input-group input {
             width: 100%;
-            padding: 11px 14px;
-            background: var(--bg-card2);
+            padding: 12px 14px;
+            background: #0a0a14;
             border: 2px solid var(--border);
             border-radius: var(--radius-sm);
             color: #fff;
-            font-size: 0.92em;
+            font-size: 0.9em;
             transition: var(--transition);
             outline: none;
             letter-spacing: 0.5px;
         }
         .login-box .input-group input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px #ff5e1a10;
-        }
-        .login-box .input-group .icon-input {
-            position: absolute;
-            right: 14px;
-            top: 36px;
-            color: var(--text3);
-            font-size: 1em;
-            pointer-events: none;
+            border-color: #00AFFF;
+            box-shadow: 0 0 20px #00AFFF20, 0 0 0 4px #00AFFF08;
         }
         .login-btn {
             width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, var(--accent), #d04810);
+            padding: 14px;
+            background: linear-gradient(135deg, #00AFFF, #0088dd);
             border: none;
-            border-radius: var(--radius-sm);
-            color: #fff;
+            border-radius: 28px;
+            color: #000;
             font-size: 0.95em;
             font-weight: 700;
             cursor: pointer;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             transition: var(--transition);
             text-transform: uppercase;
-            margin-top: 6px;
+            margin-top: 8px;
+            box-shadow: 0 0 25px #00AFFF30;
             position: relative;
             overflow: hidden;
         }
         .login-btn:hover {
-            box-shadow: 0 6px 24px #ff5e1b35;
+            box-shadow: 0 0 40px #00AFFF50, 0 8px 30px #00AFFF25;
             transform: translateY(-2px);
         }
         .login-btn:active {
-            transform: scale(0.97);
+            transform: scale(0.96);
         }
         .login-error {
             color: var(--danger);
-            font-size: 0.78em;
-            margin-top: 6px;
+            font-size: 0.75em;
+            margin-top: 8px;
             min-height: 18px;
             font-weight: 600;
         }
         .tentativas-indicator {
             display: flex;
-            gap: 6px;
+            gap: 7px;
             justify-content: center;
-            margin-top: 10px;
+            margin-top: 12px;
         }
         .tentativas-indicator .dot {
-            width: 8px;
-            height: 8px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: var(--border);
             transition: var(--transition);
         }
         .tentativas-indicator .dot.failed {
             background: var(--danger);
-            box-shadow: 0 0 8px #ff3b3b50;
-        }
-        .skip-login-btn {
-            display: none;
-            width: 100%;
-            padding: 10px;
-            background: transparent;
-            border: 2px solid var(--accent);
-            border-radius: var(--radius-sm);
-            color: var(--accent2);
-            font-size: 0.82em;
-            font-weight: 700;
-            cursor: pointer;
-            letter-spacing: 0.8px;
-            transition: var(--transition);
-            text-transform: uppercase;
-            margin-top: 8px;
-            text-decoration: none;
-            text-align: center;
-        }
-        .skip-login-btn:hover {
-            background: #ff5e1a10;
-            box-shadow: 0 0 18px #ff5e1b20;
-        }
-        .skip-login-btn.show {
-            display: block;
-            animation: fadeInUp 0.4s ease;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            box-shadow: 0 0 10px #ff3b5060;
         }
         .bloqueado-msg {
-            color: #ff6b6b;
+            color: #ff6b7a;
             font-weight: 700;
             font-size: 0.82em;
-            margin-top: 4px;
+            margin-top: 6px;
             display: none;
         }
         .bloqueado-msg.show {
@@ -266,18 +260,53 @@
                 transform: translateX(6px);
             }
             60% {
-                transform: translateX(-4px);
+                transform: translateX(-3px);
             }
             80% {
-                transform: translateX(4px);
+                transform: translateX(3px);
             }
+        }
+        .temporizador-block {
+            color: #00AFFF;
+            font-weight: 700;
+            margin-top: 6px;
+            display: none;
+            font-size: 0.9em;
+        }
+        .temporizador-block.show {
+            display: block;
+        }
+        .skip-login-btn {
+            display: none;
+            width: 100%;
+            padding: 11px;
+            background: transparent;
+            border: 2px solid #00AFFF;
+            border-radius: 28px;
+            color: #00AFFF;
+            font-size: 0.82em;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            margin-top: 10px;
+            text-decoration: none;
+            text-align: center;
+        }
+        .skip-login-btn.show {
+            display: block;
+        }
+        .skip-login-btn:hover {
+            background: #00AFFF10;
+            box-shadow: 0 0 25px #00AFFF30;
         }
 
         /* ============ MAIN APP ============ */
         .app-container {
-            max-width: 1150px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 12px;
+            padding: 14px;
         }
 
         /* HEADER */
@@ -285,62 +314,77 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 14px 18px;
+            padding: 16px 20px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            margin-bottom: 14px;
+            margin-bottom: 16px;
             box-shadow: var(--shadow-card);
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
             position: relative;
+        }
+        .app-header::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            right: 20px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00AFFF40, transparent);
         }
         .app-header .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
-        .app-header .brand .brand-icon {
-            width: 42px;
-            height: 42px;
-            background: linear-gradient(135deg, var(--accent), #b83a0a);
-            border-radius: 12px;
+        .app-header .brand .brand-icon-small {
+            width: 44px;
+            height: 44px;
+            background: #0a0a0a;
+            border: 1.5px solid #00AFFF;
+            border-radius: 14px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 0 18px #00AFFF25;
+        }
+        .brand-icon-small .tk-mini {
             font-size: 20px;
-            color: #fff;
-            box-shadow: 0 3px 12px #ff5e1b25;
+            font-weight: 900;
+            color: #00AFFF;
+            text-shadow: 0 0 10px #00AFFF;
+            line-height: 1;
+        }
+        .brand-icon-small .pro-mini {
+            font-size: 6px;
+            color: #7b8aaa;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
         .app-header .brand h1 {
-            font-size: 1.25em;
+            font-size: 1.3em;
             font-weight: 800;
             letter-spacing: -0.3px;
             line-height: 1.2;
         }
         .app-header .brand h1 span {
-            background: linear-gradient(135deg, var(--accent2), var(--gold-light));
+            background: linear-gradient(135deg, #00AFFF, #7b4dff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .app-header .brand .version {
-            font-size: 0.62em;
-            color: var(--text3);
-            letter-spacing: 0.8px;
-        }
-
-        /* NOTIFICATION BADGE */
         .notif-badge-wrapper {
             position: relative;
             cursor: pointer;
             z-index: 100;
         }
         .notif-badge {
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             background: var(--bg-card2);
-            border: 2px solid var(--border);
+            border: 1.5px solid var(--border);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -351,17 +395,17 @@
             position: relative;
         }
         .notif-badge:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 16px #ff5e1b15;
-            transform: scale(1.04);
+            border-color: #00AFFF;
+            box-shadow: 0 0 20px #00AFFF25;
+            transform: scale(1.05);
         }
-        .notif-badge .badge-dot {
+        .badge-dot {
             position: absolute;
-            top: 5px;
-            right: 5px;
-            width: 11px;
-            height: 11px;
-            background: #ff3b3b;
+            top: 6px;
+            right: 6px;
+            width: 10px;
+            height: 10px;
+            background: #ff3b50;
             border-radius: 50%;
             border: 2px solid var(--bg-card);
             animation: blinkBadge 1.2s infinite;
@@ -369,27 +413,351 @@
         @keyframes blinkBadge {
             0%,
             100% {
-                box-shadow: 0 0 4px #ff3b3b50;
+                box-shadow: 0 0 4px #ff3b5040;
             }
             50% {
-                box-shadow: 0 0 14px #ff3b3b, 0 0 22px #ff3b3b30;
+                box-shadow: 0 0 16px #ff3b50, 0 0 26px #ff3b5030;
             }
         }
         .notif-count {
             position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #ff3b3b;
+            top: -4px;
+            right: -4px;
+            background: #ff3b50;
             color: #fff;
-            font-size: 0.6em;
+            font-size: 0.55em;
             font-weight: 700;
-            width: 18px;
-            height: 18px;
+            width: 17px;
+            height: 17px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid var(--bg);
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px;
+            margin-bottom: 14px;
+            box-shadow: var(--shadow-card);
+        }
+        .section-title {
+            font-size: 1em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #c0d0e0;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 13px 26px;
+            background: linear-gradient(135deg, #00AFFF, #0080d0);
+            border: none;
+            border-radius: 28px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.88em;
+            box-shadow: 0 0 20px #00AFFF25;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 35px #00AFFF40, 0 6px 25px #00AFFF20;
+            transform: translateY(-2px);
+        }
+
+        /* HOME SCREEN */
+        .home-hero {
+            text-align: center;
+            padding: 16px 0 8px;
+        }
+        .home-hero .logo-grande-container {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background: #0a0a0a;
+            border: 2px solid #00AFFF;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px #00AFFF30, 0 0 80px #00AFFF10;
+            margin: 0 auto;
+            animation: pulseIcon 3s infinite;
+        }
+        .logo-grande-container .tk-grande {
+            font-size: 40px;
+            font-weight: 900;
+            color: #00AFFF;
+            text-shadow: 0 0 25px #00AFFF;
+            line-height: 1;
+            letter-spacing: 2px;
+        }
+        .logo-grande-container .sensi-pro-grande {
+            font-size: 11px;
+            font-weight: 700;
+            color: #7b8aaa;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .home-hero .marca {
+            font-size: 2em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00AFFF, #7b4dff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 10px 0 4px;
+            letter-spacing: -0.5px;
+        }
+        .home-hero .slogan {
+            color: var(--text2);
+            font-size: 0.9em;
+            margin-bottom: 2px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .home-hero .descricao {
+            color: var(--text3);
+            font-size: 0.74em;
+            margin-bottom: 18px;
+        }
+
+        .options-grid-novo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .option-card-novo {
+            background: var(--bg-card2);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        .option-card-novo:hover {
+            border-color: #00AFFF;
+            box-shadow: 0 0 25px #00AFFF20, 0 4px 20px rgba(0, 0, 0, 0.5);
+            transform: translateY(-3px);
+        }
+        .option-card-novo .icone {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+        .option-card-novo .titulo {
+            font-weight: 700;
+            font-size: 0.82em;
+            color: var(--text);
+            line-height: 1.3;
+            letter-spacing: 0.3px;
+        }
+        .option-card-novo .subtitulo {
+            font-size: 0.66em;
+            color: var(--text3);
+            margin-top: 3px;
+        }
+
+        .btn-otimizar {
+            display: block;
+            width: 100%;
+            padding: 17px;
+            background: linear-gradient(135deg, #00AFFF, #0080d0);
+            border: none;
+            border-radius: 30px;
+            color: #000;
+            font-weight: 800;
+            font-size: 1.05em;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            margin: 16px 0;
+            box-shadow: 0 0 35px #00AFFF30, 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+        .btn-otimizar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px #00AFFF50, 0 12px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* UPDATE ALERT */
+        .update-alert {
+            display: none;
+            background: #1a1008;
+            border: 1.5px solid #ff8c00;
+            border-radius: 12px;
+            padding: 11px 14px;
+            margin-bottom: 12px;
+            text-align: center;
+            color: #ffb74d;
+            font-weight: 700;
+            font-size: 0.78em;
+            letter-spacing: 0.5px;
+            animation: pulseAlert 2s infinite;
+        }
+        @keyframes pulseAlert {
+            0%,
+            100% {
+                box-shadow: 0 0 8px #ff8c0025;
+            }
+            50% {
+                box-shadow: 0 0 22px #ff8c0050;
+            }
+        }
+
+        /* PHONE GRID */
+        .phone-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+            gap: 7px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .phone-card {
+            background: var(--bg-card2);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 8px 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.64em;
+        }
+        .phone-card.active {
+            border-color: #00AFFF;
+            box-shadow: 0 0 14px #00AFFF25;
+            background: #0a1420;
+        }
+        .phone-card:hover {
+            border-color: #00AFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px #00AFFF15;
+        }
+
+        /* SLIDERS */
+        .slider-group {
+            margin-bottom: 12px;
+        }
+        .slider-group label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 0.7em;
+            color: var(--text2);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .slider-group label .val {
+            color: #00AFFF;
+            font-weight: 700;
+            font-size: 0.95em;
+            text-shadow: 0 0 8px #00AFFF40;
+        }
+        .slider-group input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 10px;
+            background: #1a1a2e;
+            outline: none;
+            margin-top: 4px;
+        }
+        .slider-group input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #0a0a0a;
+            cursor: pointer;
+            border: 2px solid #00AFFF;
+            box-shadow: 0 0 18px #00AFFF40, 0 0 30px #00AFFF15;
+            transition: var(--transition);
+        }
+        .slider-group input[type=range]::-webkit-slider-thumb:hover {
+            box-shadow: 0 0 28px #00AFFF60, 0 0 45px #00AFFF25;
+            transform: scale(1.1);
+        }
+
+        /* TIRO PREVIEW */
+        .tiro-size-visual {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 10px 0;
+        }
+        .tiro-btn-preview {
+            width: 60px;
+            height: 60px;
+            background: #00AFFF;
+            border-radius: 14px;
+            transition: all 0.2s;
+            box-shadow: 0 0 20px #00AFFF40, 0 0 40px #00AFFF15;
+            border: 2px solid #00AFFF60;
+        }
+
+        /* RESULT BOX */
+        .result-box {
+            background: var(--bg-card2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px;
+            margin-top: 14px;
+            box-shadow: var(--shadow-card);
+        }
+        .ia-image {
+            width: 100%;
+            height: 200px;
+            background: #000000;
+            border-radius: var(--radius-sm);
+            margin: 12px 0;
+            position: relative;
+            overflow: hidden;
+            border: 1.5px solid #1a1a30;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 12px;
+            box-shadow: inset 0 0 40px #00AFFF05;
+        }
+        .bar {
+            width: 16px;
+            border-radius: 4px 4px 0 0;
+            background: linear-gradient(180deg, #00AFFF, #0080d0);
+            box-shadow: 0 0 14px #00AFFF50, 0 0 30px #00AFFF15;
+            transition: height 0.5s;
+        }
+        .btn-copy {
+            padding: 12px;
+            background: linear-gradient(135deg, #00AFFF, #0080d0);
+            border: none;
+            border-radius: 28px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px #00AFFF25;
+            transition: var(--transition);
+        }
+        .btn-copy:hover {
+            box-shadow: 0 0 35px #00AFFF40;
+            transform: translateY(-2px);
         }
 
         /* DICAS PANEL */
@@ -403,1241 +771,580 @@
             background: var(--bg-card);
             border-left: 1px solid var(--border);
             z-index: 999;
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.75);
+            transition: right 0.4s;
             overflow-y: auto;
             padding: 24px 18px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
         }
         .dicas-panel.open {
             right: 0;
         }
-        .dicas-panel-backdrop {
+        .dicas-backdrop {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.65);
             z-index: 998;
             opacity: 0;
             visibility: hidden;
-            transition: var(--transition);
+            transition: 0.3s;
         }
-        .dicas-panel-backdrop.show {
+        .dicas-backdrop.show {
             opacity: 1;
             visibility: visible;
         }
-        .dicas-panel .close-dicas {
-            position: sticky;
-            top: 0;
+        .close-dicas {
             float: right;
-            background: var(--bg-card2);
-            border: 1px solid var(--border);
+            background: none;
+            border: none;
             color: #fff;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+            font-size: 1.3em;
             cursor: pointer;
-            font-size: 1em;
             font-weight: 700;
             transition: var(--transition);
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-        .dicas-panel .close-dicas:hover {
-            background: var(--danger);
-            border-color: var(--danger);
+        .close-dicas:hover {
+            color: #ff3b50;
         }
         .dicas-panel h3 {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 700;
             margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .dicas-panel .dica-item {
-            background: var(--bg-card2);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 12px;
-            margin-bottom: 10px;
-            transition: var(--transition);
-            border-left: 3px solid var(--accent);
-        }
-        .dicas-panel .dica-item:hover {
-            border-left-color: var(--gold);
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
-        }
-        .dicas-panel .dica-item .dica-title {
-            font-weight: 700;
-            font-size: 0.85em;
-            margin-bottom: 3px;
-            color: var(--accent2);
-        }
-        .dicas-panel .dica-item .dica-text {
-            font-size: 0.76em;
-            color: var(--text2);
-            line-height: 1.4;
-        }
-        .dicas-panel .dica-tag {
-            display: inline-block;
-            background: #ff5e1b20;
-            color: var(--accent2);
-            font-size: 0.65em;
-            padding: 3px 8px;
-            border-radius: 16px;
-            margin-top: 6px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            letter-spacing: 1px;
+            color: #00AFFF;
         }
 
-        /* SECTION TITLES */
-        .section-title {
-            font-size: 1.05em;
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00AFFF;
+            color: #000;
+            padding: 10px 24px;
+            border-radius: 28px;
             font-weight: 700;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 7px;
-            letter-spacing: -0.2px;
+            z-index: 9999;
+            animation: toast 2s forwards;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 30px #00AFFF40;
         }
-        .section-title .icon {
-            font-size: 1.1em;
+        @keyframes toast {
+            0% {
+                opacity: 0;
+                bottom: 0;
+            }
+            20% {
+                opacity: 1;
+                bottom: 24px;
+            }
+            80% {
+                opacity: 1;
+                bottom: 24px;
+            }
+            100% {
+                opacity: 0;
+                bottom: 44px;
+            }
         }
 
-        /* GRID */
-        .main-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-        }
-        @media (max-width: 800px) {
-            .main-grid {
-                grid-template-columns: 1fr;
-            }
-            .app-header {
-                justify-content: center;
-                text-align: center;
-            }
-            .app-header .brand {
-                flex-direction: column;
-                gap: 4px;
+        @media (max-width: 600px) {
+            .options-grid-novo {
+                grid-template-columns: 1fr 1fr;
             }
             .dicas-panel {
                 width: 100%;
                 right: -105%;
             }
-            .dicas-panel.open {
-                right: 0;
+            .home-hero .logo-grande-container {
+                width: 80px;
+                height: 80px;
+                border-radius: 20px;
             }
-        }
-
-        /* CARDS */
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 16px;
-            box-shadow: var(--shadow-card);
-            transition: var(--transition);
-        }
-        .card:hover {
-            border-color: #ffffff10;
-        }
-        .card-full {
-            grid-column: 1 / -1;
-        }
-
-        /* CELULAR SELECTOR */
-        .phone-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 7px;
-            margin-top: 6px;
-        }
-        .phone-card {
-            background: var(--bg-card2);
-            border: 2px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 10px 6px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        .phone-card:hover {
-            border-color: #ffffff20;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-        }
-        .phone-card.active {
-            border-color: var(--accent) !important;
-            box-shadow: 0 0 16px #ff5e1b20;
-            background: #1a1a28;
-        }
-        .phone-card.active::after {
-            content: '✓';
-            position: absolute;
-            top: 6px;
-            right: 8px;
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 0.7em;
-            background: #1a1a28;
-            padding: 1px 5px;
-            border-radius: 4px;
-        }
-        .phone-card .phone-icon {
-            font-size: 1.4em;
-            margin-bottom: 4px;
-        }
-        .phone-card .phone-name {
-            font-weight: 700;
-            font-size: 0.68em;
-            line-height: 1.2;
-            color: var(--text);
-        }
-        .phone-card .phone-dpi {
-            font-size: 0.6em;
-            color: var(--accent2);
-            margin-top: 2px;
-            font-weight: 600;
-        }
-
-        /* SLIDERS */
-        .slider-group {
-            margin-bottom: 11px;
-        }
-        .slider-group label {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            font-size: 0.74em;
-            margin-bottom: 3px;
-            color: var(--text2);
-        }
-        .slider-group label .val {
-            color: var(--accent2);
-            font-weight: 700;
-            font-size: 0.88em;
-        }
-        .slider-group input[type=range] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 6px;
-            border-radius: 8px;
-            background: var(--border);
-            outline: none;
-            cursor: pointer;
-        }
-        .slider-group input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: var(--accent);
-            cursor: pointer;
-            border: 2px solid #fff;
-            box-shadow: 0 0 12px #ff5e1b40;
-            transition: var(--transition);
-        }
-        .slider-group input[type=range]::-webkit-slider-thumb:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 18px #ff5e1b60;
-        }
-
-        /* PRESET BUTTONS */
-        .preset-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 12px;
-        }
-        .preset-btn {
-            padding: 7px 11px;
-            background: var(--bg-card2);
-            border: 1.5px solid var(--border);
-            border-radius: 20px;
-            color: var(--text);
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.7em;
-            transition: var(--transition);
-            white-space: nowrap;
-            letter-spacing: 0.2px;
-        }
-        .preset-btn:hover {
-            border-color: var(--accent);
-            color: #fff;
-            background: #1f1f2a;
-        }
-        .preset-btn.active-preset {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: #fff;
-            box-shadow: 0 3px 12px #ff5e1b35;
-            font-weight: 700;
-        }
-
-        /* DPI SELECTOR */
-        .dpi-selector {
-            display: flex;
-            gap: 5px;
-            flex-wrap: wrap;
-            margin-top: 6px;
-        }
-        .dpi-btn {
-            padding: 5px 9px;
-            background: var(--bg-card2);
-            border: 1.5px solid var(--border);
-            border-radius: 16px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.68em;
-            transition: var(--transition);
-            color: var(--text2);
-        }
-        .dpi-btn:hover {
-            border-color: #fff;
-            color: #fff;
-        }
-        .dpi-btn.active-dpi {
-            background: #4d9eff18;
-            border-color: var(--blue);
-            color: #7ab8ff;
-            box-shadow: 0 0 10px #4d9eff15;
-        }
-
-        /* ESTILO DE JOGO */
-        .estilo-selector {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-            margin-top: 6px;
-        }
-        .estilo-btn {
-            padding: 7px 12px;
-            background: var(--bg-card2);
-            border: 1.5px solid var(--border);
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.72em;
-            transition: var(--transition);
-            color: var(--text2);
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .estilo-btn:hover {
-            border-color: var(--gold);
-            color: #fff;
-        }
-        .estilo-btn.active-estilo {
-            background: #e0a80018;
-            border-color: var(--gold);
-            color: var(--gold-light);
-            box-shadow: 0 0 10px #e0a80015;
-            font-weight: 700;
-        }
-
-        /* COPY BUTTON */
-        .btn-copy {
-            width: 100%;
-            padding: 11px;
-            background: linear-gradient(135deg, var(--accent), #b83a0a);
-            border: none;
-            border-radius: var(--radius-sm);
-            color: #fff;
-            font-weight: 700;
-            font-size: 0.84em;
-            cursor: pointer;
-            letter-spacing: 0.8px;
-            transition: var(--transition);
-            text-transform: uppercase;
-            margin-top: 8px;
-        }
-        .btn-copy:hover {
-            box-shadow: 0 6px 22px #ff5e1b35;
-            transform: translateY(-1px);
-        }
-        .btn-copy:active {
-            transform: scale(0.96);
-        }
-        .copied-toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--success);
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 24px;
-            font-weight: 700;
-            font-size: 0.8em;
-            z-index: 9999;
-            animation: toastIn 0.4s ease, toastOut 0.4s ease 1.6s forwards;
-            letter-spacing: 0.4px;
-        }
-        @keyframes toastIn {
-            from {
-                opacity: 0;
-                transform: translateX(-50%) translateY(20px);
+            .logo-grande-container .tk-grande {
+                font-size: 30px;
             }
-            to {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
+            .home-hero .marca {
+                font-size: 1.5em;
             }
-        }
-        @keyframes toastOut {
-            from {
-                opacity: 1;
+            .login-box {
+                padding: 28px 18px;
             }
-            to {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-10px);
-            }
-        }
-
-        /* RESULTADO VISUAL */
-        .sensibilidade-visual {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
-        .sens-box {
-            flex: 1;
-            min-width: 50px;
-            background: var(--bg-card2);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            padding: 9px 5px;
-            text-align: center;
-        }
-        .sens-box.principal {
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 14px #ff5e1b18;
-            background: #1a1a28;
-            min-width: 65px;
-        }
-        .sens-box .sens-val {
-            font-size: 1.4em;
-            font-weight: 800;
-            color: var(--accent2);
-        }
-        .sens-box.principal .sens-val {
-            font-size: 1.8em;
-            color: var(--gold-light);
-        }
-        .sens-box .sens-label {
-            font-size: 0.6em;
-            color: var(--text3);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 2px;
-        }
-
-        /* FOOTER */
-        .app-footer {
-            text-align: center;
-            padding: 14px;
-            color: var(--text3);
-            font-size: 0.66em;
-            letter-spacing: 0.4px;
-            margin-top: 8px;
-        }
-        .app-footer a {
-            color: var(--accent2);
-            text-decoration: none;
-        }
-
-        /* SCROLLBAR */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #252535;
-            border-radius: 10px;
         }
     </style>
 </head>
 <body>
 
-    <!-- ==================== LOGIN OVERLAY ==================== -->
+    <!-- ============ LOGIN ============ -->
     <div class="login-overlay" id="loginOverlay">
         <div class="login-box">
-            <div class="logo-icon">🔥</div>
+            <div class="app-icon">
+                <div class="icon-tk">TK</div>
+                <div class="icon-sub">SENSI PRO</div>
+            </div>
             <h2>TK SENSI PRO</h2>
-            <p class="subtitle">Gerador Premium de Sensibilidade • Free Fire</p>
+            <p class="subtitle">Gerador de Sensibilidade IA</p>
             <div class="input-group">
-                <label>👤 Nome de Usuário</label>
+                <label>Nome de Usuário</label>
                 <input type="text" id="loginUser" placeholder="Digite o usuário..." autocomplete="off">
-                <span class="icon-input">👤</span>
             </div>
             <div class="input-group">
-                <label>🔒 Senha</label>
+                <label>Senha</label>
                 <input type="password" id="loginPass" placeholder="Digite a senha...">
-                <span class="icon-input">🔒</span>
             </div>
-            <button class="login-btn" onclick="handleLogin()">⚡ ENTRAR</button>
+            <button class="login-btn" onclick="handleLogin()">ENTRAR</button>
             <p class="login-error" id="loginError"></p>
-            <p class="bloqueado-msg" id="bloqueadoMsg">❌ Não sabe a senha? Use o botão abaixo!</p>
+            <p class="bloqueado-msg" id="bloqueadoMsg">Você errou 5 vezes! Aguarde...</p>
+            <p class="temporizador-block" id="temporizadorBlock"></p>
+            <div class="tentativas-indicator" id="tentativasDots">
+                <span class="dot" id="dot1"></span>
+                <span class="dot" id="dot2"></span>
+                <span class="dot" id="dot3"></span>
+                <span class="dot" id="dot4"></span>
+                <span class="dot" id="dot5"></span>
+            </div>
             <a class="skip-login-btn" id="skipLoginBtn"
             href="https://youtube.com/shorts/FBSbl2Bu9Fs?si=LXrHByT5lB0yBk2y"
-            target="_blank"
-            rel="noopener">
-            🔓 LOGAR SEM SENHA (Canal)
-        </a>
-        <div class="tentativas-indicator" id="tentativasDots">
-            <span class="dot" id="dot1"></span>
-            <span class="dot" id="dot2"></span>
-            <span class="dot" id="dot3"></span>
+            target="_blank">ACESSAR CANAL</a>
         </div>
     </div>
-</div>
 
-<!-- ==================== DICAS PANEL BACKDROP ==================== -->
-<div class="dicas-panel-backdrop" id="dicasBackdrop" onclick="closeDicas()"></div>
-
-<!-- ==================== DICAS PANEL ==================== -->
-<div class="dicas-panel" id="dicasPanel">
-    <button class="close-dicas" onclick="closeDicas()">✕</button>
-    <h3>💡 Dicas Premium de Otimização</h3>
-    <div id="dicasContent">
-        <!-- preenchido dinamicamente -->
+    <!-- ============ DICAS PANEL ============ -->
+    <div class="dicas-backdrop" id="dicasBackdrop" onclick="closeDicas()"></div>
+    <div class="dicas-panel" id="dicasPanel">
+        <button class="close-dicas" onclick="closeDicas()">✕</button>
+        <h3>DICAS DE DESENVOLVEDOR</h3>
+        <div id="dicasContent"></div>
     </div>
-</div>
 
-<!-- ==================== MAIN APP ==================== -->
-<div class="app-container" id="appContainer">
-    <!-- HEADER -->
-    <header class="app-header">
-        <div class="brand">
-            <div class="brand-icon">🔥</div>
-            <div>
-                <h1>TK <span>SENSI PRO</span></h1>
-                <span class="version">v4.0 PRO • Gerador Revolucionário</span>
+    <!-- ============ MAIN APP ============ -->
+    <div class="app-container" id="mainApp" style="display:none;">
+        <header class="app-header">
+            <div class="brand">
+                <div class="brand-icon-small">
+                    <div class="tk-mini">TK</div>
+                    <div class="pro-mini">PRO</div>
+                </div>
+                <div><h1>TK <span>SENSI PRO</span></h1></div>
             </div>
-        </div>
-        <div class="notif-badge-wrapper" onclick="openDicas()" title="Dicas Premium">
-            <div class="notif-badge">
-                🔔
-                <span class="badge-dot"></span>
+            <div class="notif-badge-wrapper" onclick="openDicas()">
+                <div class="notif-badge">🔔<span class="badge-dot"></span></div>
+                <span class="notif-count" id="notifCount">6</span>
             </div>
-            <span class="notif-count">9</span>
-        </div>
-    </header>
+        </header>
 
-    <!-- MAIN GRID -->
-    <div class="main-grid">
-        <!-- COLUNA 1: MODELOS DE CELULAR -->
-        <div class="card">
-            <div class="section-title"><span class="icon">📱</span> Selecione seu Celular (24 modelos)</div>
-            <div class="phone-grid" id="phoneGrid">
-                <!-- preenchido dinamicamente -->
-            </div>
+        <div class="update-alert" id="updateAlert">
+            NOVIDADES EM BREVE — Atualização programada a cada 2 dias com novos recursos!
         </div>
 
-        <!-- COLUNA 2: ESTILO DE JOGO + PRESETS -->
-        <div class="card">
-            <div class="section-title"><span class="icon">🎮</span> Estilo de Jogo</div>
-            <div class="estilo-selector" id="estiloSelector">
-                <button class="estilo-btn active-estilo" data-estilo="allround">🔄 All-Rounder</button>
-                <button class="estilo-btn" data-estilo="rusher">⚡ Rusher</button>
-                <button class="estilo-btn" data-estilo="sniper">🎯 Sniper</button>
-                <button class="estilo-btn" data-estilo="suporte">🛡️ Suporte</button>
+        <!-- HOME SCREEN -->
+        <div id="homeScreen">
+            <div class="home-hero">
+                <div class="logo-grande-container">
+                    <div class="tk-grande">TK</div>
+                    <div class="sensi-pro-grande">SENSI PRO</div>
+                </div>
+                <div class="marca">SENSI PRO</div>
+                <p class="slogan">MELHORE SUA PRECISÃO</p>
+                <p class="descricao">Ajustes avançados para elevar seu desempenho no jogo.</p>
             </div>
-            <div class="section-title" style="font-size:0.95em; margin-top:8px;"><span class="icon">⚙️</span> Presets de Sensibilidade</div>
-            <div class="preset-buttons" id="presetButtons">
-                <button class="preset-btn active-preset" data-preset="pro">🏆 Pro Player</button>
-                <button class="preset-btn" data-preset="rush">⚡ Rush Agressivo</button>
-                <button class="preset-btn" data-preset="sniper">🎯 Sniper Precisão</button>
-                <button class="preset-btn" data-preset="equilibrada">⚖️ Equilibrada</button>
-                <button class="preset-btn" data-preset="tournament">🏅 Tournament</button>
-                <button class="preset-btn" data-preset="extreme">🔥 Extreme Rush</button>
-                <button class="preset-btn" data-preset="economy">💤 Economy</button>
-                <button class="preset-btn" data-preset="custom">🔧 Custom</button>
+
+            <div class="options-grid-novo">
+                <div class="option-card-novo" onclick="showGerador()">
+                    <div class="icone">🎚️</div>
+                    <div class="titulo">Ajustes de Sensibilidade</div>
+                    <div class="subtitulo">Encontre a sensibilidade perfeita</div>
+                </div>
+                <div class="option-card-novo" onclick="showGerador()">
+                    <div class="icone">⚙️</div>
+                    <div class="titulo">Configurações Avançadas</div>
+                    <div class="subtitulo">Personalize cada detalhe</div>
+                </div>
+                <div class="option-card-novo" onclick="openDicas()">
+                    <div class="icone">🏆</div>
+                    <div class="titulo">Perfis Recomendados</div>
+                    <div class="subtitulo">Por jogadores profissionais</div>
+                </div>
+                <div class="option-card-novo" onclick="showNovidades()">
+                    <div class="icone">🛠️</div>
+                    <div class="titulo">Ferramentas Exclusivas</div>
+                    <div class="subtitulo">Recursos únicos pro player</div>
+                </div>
             </div>
-            <div class="section-title" style="font-size:0.95em; margin-top:6px;"><span class="icon">🎚️</span> Ajuste Fino</div>
-            <div class="slider-group">
-                <label>🔫 Sensibilidade Principal <span class="val" id="valGeral">95</span></label>
-                <input type="range" min="1" max="200" value="95" id="sliderGeral" oninput="updateSliders()">
-            </div>
-            <div class="slider-group">
-                <label>🔴 Red Dot / Mira 1x <span class="val" id="valRedDot">90</span></label>
-                <input type="range" min="1" max="200" value="90" id="sliderRedDot" oninput="updateSliders()">
-            </div>
-            <div class="slider-group">
-                <label>🟠 Mira 2x <span class="val" id="valMira2x">85</span></label>
-                <input type="range" min="1" max="200" value="85" id="sliderMira2x" oninput="updateSliders()">
-            </div>
-            <div class="slider-group">
-                <label>🟡 Mira 4x <span class="val" id="valMira4x">75</span></label>
-                <input type="range" min="1" max="200" value="75" id="sliderMira4x" oninput="updateSliders()">
-            </div>
-            <div class="slider-group">
-                <label>🟢 Mira 8x / Sniper <span class="val" id="valMira8x">55</span></label>
-                <input type="range" min="1" max="200" value="55" id="sliderMira8x" oninput="updateSliders()">
-            </div>
-            <div class="slider-group">
-                <label>🔄 Giroscópio <span class="val" id="valGyro">70</span></label>
-                <input type="range" min="1" max="200" value="70" id="sliderGyro" oninput="updateSliders()">
-            </div>
-            <div class="slider-group">
-                <label>👆 Botão de Tiro <span class="val" id="valFireBtn">80</span></label>
-                <input type="range" min="1" max="200" value="80" id="sliderFireBtn" oninput="updateSliders()">
-            </div>
+
+            <button class="btn-otimizar" onclick="showGerador()">OTIMIZAR AGORA</button>
         </div>
 
-        <!-- COLUNA 1 PARTE 2: DPI -->
-        <div class="card">
-            <div class="section-title"><span class="icon">🖱️</span> DPI do Dispositivo</div>
-            <div class="dpi-selector" id="dpiSelector">
-                <button class="dpi-btn" data-dpi="320">320</button>
-                <button class="dpi-btn" data-dpi="400">400</button>
-                <button class="dpi-btn" data-dpi="480">480</button>
-                <button class="dpi-btn" data-dpi="520">520</button>
-                <button class="dpi-btn active-dpi" data-dpi="560">560</button>
-                <button class="dpi-btn" data-dpi="600">600</button>
-                <button class="dpi-btn" data-dpi="640">640</button>
-                <button class="dpi-btn" data-dpi="720">720</button>
-                <button class="dpi-btn" data-dpi="800">800</button>
-                <button class="dpi-btn" data-dpi="960">960</button>
-                <button class="dpi-btn" data-dpi="1000">1000</button>
-                <button class="dpi-btn" data-dpi="1200">1200</button>
+        <!-- GERADOR SCREEN -->
+        <div id="geradorScreen" style="display:none;">
+            <button class="btn-primary" style="margin-bottom:12px;" onclick="showHome()">← VOLTAR</button>
+            <div class="card">
+                <div class="section-title">📱 ESCOLHA O CELULAR</div>
+                <div class="phone-grid" id="phoneGrid"></div>
+                <button class="btn-primary" style="width:100%; margin-top:12px;" onclick="quickGenerate()">🤖 RECOMENDADA IA PARA ESTE CELULAR</button>
             </div>
-            <p style="margin-top:8px; font-size:0.66em; color:var(--text3);">
-                🎯 DPI atual: <strong style="color:var(--accent2);" id="dpiAtual">560</strong> —
-                📱 Recomendado: <span id="dpiRecomendado">Samsung Galaxy S24 Ultra</span>
-            </p>
-        </div>
-
-        <!-- COLUNA 2 PARTE 2: RESUMO VISUAL -->
-        <div class="card">
-            <div class="section-title"><span class="icon">📊</span> Resumo da Configuração</div>
-            <div class="sensibilidade-visual" id="sensVisual">
-                <div class="sens-box principal"><div class="sens-val" id="resGeral">95</div><div class="sens-label">🔥 Principal</div></div>
-                <div class="sens-box"><div class="sens-val" id="resRedDot">90</div><div class="sens-label">Red Dot</div></div>
-                <div class="sens-box"><div class="sens-val" id="resMira2x">85</div><div class="sens-label">2x</div></div>
-                <div class="sens-box"><div class="sens-val" id="resMira4x">75</div><div class="sens-label">4x</div></div>
-                <div class="sens-box"><div class="sens-val" id="resMira8x">55</div><div class="sens-label">8x/Sniper</div></div>
-                <div class="sens-box"><div class="sens-val" id="resGyro">70</div><div class="sens-label">Gyro</div></div>
-                <div class="sens-box"><div class="sens-val" id="resFireBtn">80</div><div class="sens-label">👆 Tiro</div></div>
+            <div class="card">
+                <div class="section-title">🎮 ESTILO DE JOGO</div>
+                <div style="display:flex; flex-wrap:wrap; gap:6px;" id="estiloBtns"></div>
             </div>
-            <button class="btn-copy" onclick="copiarConfig()">📋 COPIAR CONFIGURAÇÃO PRO</button>
-            <p style="text-align:center; margin-top:6px; font-size:0.62em; color:var(--text3);">
-                📱 Celular: <strong id="resCelular" style="color:var(--accent2);">Samsung Galaxy S24 Ultra</strong> |
-                🎮 Estilo: <strong id="resEstilo" style="color:var(--gold-light);">All-Rounder</strong> |
-                🖱️ DPI: <strong id="resDPI" style="color:var(--accent2);">560</strong>
-            </p>
-        </div>
+            <div class="card">
+                <div class="section-title">🎛️ AJUSTES FINOS</div>
+                <div class="slider-group"><label>🔫 Sensibilidade Geral <span class="val" id="valGeral">95</span></label><input type="range" min="1" max="200" value="95" id="sliderGeral" oninput="updateSliders()"></div>
+                <div class="slider-group"><label>🔴 Red Dot <span class="val" id="valRedDot">85</span></label><input type="range" min="1" max="200" value="85" id="sliderRedDot" oninput="updateSliders()"></div>
+                <div class="slider-group"><label>🟠 Mira 2x <span class="val" id="val2x">80</span></label><input type="range" min="1" max="200" value="80" id="slider2x" oninput="updateSliders()"></div>
+                <div class="slider-group"><label>🟡 Mira 4x <span class="val" id="val4x">70</span></label><input type="range" min="1" max="200" value="70" id="slider4x" oninput="updateSliders()"></div>
+                <div class="slider-group"><label>🟢 AWM <span class="val" id="valAWM">50</span></label><input type="range" min="1" max="200" value="50" id="sliderAWM" oninput="updateSliders()"></div>
+                <div class="slider-group"><label>👀 Olhadinha <span class="val" id="valOlhadinha">60</span></label><input type="range" min="1" max="200" value="60" id="sliderOlhadinha" oninput="updateSliders()"></div>
+                <div class="slider-group"><label>⚡ Velocidade de Toque <span class="val" id="valTouch">90</span></label><input type="range" min="1" max="200" value="90" id="sliderTouch" oninput="updateSliders()"></div>
+                <div class="slider-group"><label>👆 Tamanho Botão Tiro <span class="val" id="valTiroSize">60%</span></label><input type="range" min="20" max="100" value="60" id="sliderTiroSize" oninput="updateTiroSize()"></div>
+                <div class="tiro-size-visual"><div class="tiro-btn-preview" id="tiroPreview" style="width:60px;height:60px;"></div><span style="color:var(--text3); font-size:0.8em;">Pré-visualização</span></div>
+                <div class="slider-group"><label>🖱️ DPI (max 980) <span class="val" id="valDPI">560</span></label><input type="range" min="200" max="980" value="560" id="sliderDPI" oninput="updateSliders()"></div>
+            </div>
+            <button class="btn-primary" onclick="gerarSensi()" style="width:100%;">GERAR SENSI IA</button>
 
-        <!-- CARD FULL: DICAS RÁPIDAS PREMIUM -->
-        <div class="card card-full" style="border-left: 3px solid var(--accent);">
-            <div class="section-title"><span class="icon">🔥</span> Dicas Premium para Performance Máxima</div>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap:10px;" id="dicasRapidas">
-                <!-- preenchido dinamicamente -->
+            <div id="resultadoArea" style="display:none;">
+                <div class="result-box">
+                    <div class="section-title">📊 RESULTADO IA</div>
+                    <div class="ia-image" id="iaCanvas"></div>
+                    <p style="font-size:0.78em; color:var(--text2);"><strong>📱 Celular:</strong> <span id="resCelular" style="color:#00AFFF;"></span> | <strong>🎮 Estilo:</strong> <span id="resEstilo" style="color:#00AFFF;"></span></p>
+                    <p style="font-size:0.78em; color:var(--text2);"><strong>🖱️ DPI:</strong> <span id="resDPI" style="color:#00AFFF;"></span> | <strong>🔫 Geral:</strong> <span id="resGeral" style="color:#00AFFF;"></span></p>
+                    <p style="font-size:0.74em; color:var(--text3);"><strong>🔴 Red Dot:</strong> <span id="resRedDot"></span> | <strong>🟠 2x:</strong> <span id="res2x"></span> | <strong>🟡 4x:</strong> <span id="res4x"></span></p>
+                    <p style="font-size:0.74em; color:var(--text3);"><strong>🟢 AWM:</strong> <span id="resAWM"></span> | <strong>👀 Olhadinha:</strong> <span id="resOlhadinha"></span></p>
+                    <p style="font-size:0.74em; color:var(--text3);"><strong>⚡ Touch:</strong> <span id="resTouch"></span> | <strong>👆 Botão Tiro:</strong> <span id="resTiroSize"></span></p>
+                    <button class="btn-copy" onclick="copiarSensi()">📋 COPIAR SENSI</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <footer class="app-footer">
-        🔥 TK SENSI PRO © 2026 • Desenvolvido para a comunidade Free Fire •
-        <a href="https://youtube.com/shorts/FBSbl2Bu9Fs?si=LXrHByT5lB0yBk2y" target="_blank" rel="noopener">📺 Canal TK KORINGA</a>
-    </footer>
-</div>
+    <script>
+        const phoneModels = [
+            { id: 's24u', name: 'Samsung Galaxy S24 Ultra', dpi: 560 },
+            { id: 'iphone15pm', name: 'iPhone 15 Pro Max', dpi: 460 },
+            { id: 'pocox6p', name: 'Xiaomi Poco X6 Pro', dpi: 520 },
+            { id: 'redmagic9p', name: 'RedMagic 9 Pro', dpi: 960 },
+            { id: 'rogphone8', name: 'ASUS ROG Phone 8', dpi: 720 },
+            { id: 'realmegt5', name: 'Realme GT 5', dpi: 640 },
+            { id: 'motorolaedge40', name: 'Motorola Edge 40', dpi: 480 },
+            { id: 'samsunga54', name: 'Samsung Galaxy A54', dpi: 400 },
+            { id: 'xiaomi13t', name: 'Xiaomi 13T Pro', dpi: 600 },
+            { id: 'oneplus12', name: 'OnePlus 12', dpi: 640 },
+            { id: 'infinixturbo', name: 'Infinix GT 20 Pro', dpi: 520 },
+            { id: 'redminote13', name: 'Redmi Note 13 Pro+', dpi: 480 },
+            { id: 'huaweip60', name: 'Huawei P60 Pro', dpi: 520 },
+            { id: 'honor90', name: 'Honor 90', dpi: 480 },
+            { id: 'lenovoy700', name: 'Lenovo Legion Y700', dpi: 800 },
+            { id: 'iqoo11', name: 'iQOO 11', dpi: 640 },
+            { id: 'blackshark5', name: 'Black Shark 5 Pro', dpi: 720 },
+            { id: 'nubiaz50', name: 'Nubia Z50', dpi: 640 },
+            { id: 'vivox90', name: 'Vivo X90 Pro', dpi: 520 },
+            { id: 'oppofindx6', name: 'Oppo Find X6 Pro', dpi: 560 },
+            { id: 'xiaomi14', name: 'Xiaomi 14', dpi: 600 },
+            { id: 'galaxya35', name: 'Samsung Galaxy A35', dpi: 400 },
+            { id: 'pocof5', name: 'Poco F5', dpi: 520 },
+            { id: 'realmegtneo5', name: 'Realme GT Neo 5', dpi: 600 },
+            { id: 'motorolag84', name: 'Motorola Moto G84', dpi: 400 },
+            { id: 'zenfone10', name: 'ASUS Zenfone 10', dpi: 480 },
+            { id: 'nothingphone2', name: 'Nothing Phone 2', dpi: 520 },
+            { id: 'samsungzfold5', name: 'Samsung Galaxy Z Fold 5', dpi: 560 },
+            { id: 'iphone15', name: 'iPhone 15', dpi: 460 },
+            { id: 'pocox5pro', name: 'Poco X5 Pro', dpi: 520 },
+        ];
 
-<script>
-    // ==================== DADOS ====================
-    const phoneModels = [
-        { id: 's24u', name: 'Samsung Galaxy S24 Ultra', icon: '📱', dpi: 560, tips: [
-                '🧹 Ative o Game Booster da Samsung e limpe a RAM antes do jogo.',
-                '🖥️ Use resolução WQHD+ e 120Hz adaptativo para fluidez.',
-                '🔧 Instale o Game Plugins para otimizar touch e desempenho.',
-                '❄️ Mantenha o aparelho em ambiente fresco, evite capas grossas.',
-                '📶 Prefira Wi-Fi 6 para latência ultrabaixa.',
-                '🔋 Desative economia de bateria durante o jogo.'
-            ] },
-        { id: 'iphone15pm', name: 'iPhone 15 Pro Max', icon: '🍎', dpi: 460, tips: [
-                '📱 Desative o Brilho Automático e mantenha 120Hz ProMotion.',
-                '🔋 Modo de Baixo Consumo DESLIGADO para evitar throttling.',
-                '📵 Feche apps via AssistiveTouch antes de jogar.',
-                '🎧 Use AirPods Pro com áudio espacial para imersão.',
-                '❄️ Evite carregar enquanto joga para não aquecer.',
-                '📶 Conecte ao Wi-Fi 5GHz e desative Bluetooth se não usar.'
-            ] },
-        { id: 'pocox6p', name: 'Xiaomi Poco X6 Pro', icon: '⚡', dpi: 520, tips: [
-                '🎮 Ative o Game Turbo e o modo desempenho máximo.',
-                '🧹 Desative otimização MIUI para apps em segundo plano.',
-                '🖥️ Use 120Hz fixo e resolução FHD+.',
-                '❄️ Remova a capa durante sessões longas.',
-                '🔋 Use carregador original para manter a carga estável.',
-                '📶 Prefira rede 4G/5G com boa latência.'
-            ] },
-        { id: 'redmagic9p', name: 'RedMagic 9 Pro', icon: '🎮', dpi: 960, tips: [
-                '🔥 Ative o Modo Competitivo no Game Space.',
-                '🌀 Use ventoinha interna no modo máximo sempre.',
-                '👆 Configure touch sampling para 2000Hz.',
-                '🖥️ Resolução máxima com 120Hz para precisão.',
-                '🎧 Use fones com fio para zero delay de áudio.',
-                '❄️ Mantenha o cooler externo em sessões competitivas.'
-            ] },
-        { id: 'rogphone8', name: 'ASUS ROG Phone 8', icon: '👾', dpi: 720, tips: [
-                '⚡ Ative o X Mode para performance máxima.',
-                '🔘 Configure AirTriggers para botões extras.',
-                '👆 Taxa de touch 720Hz no Armoury Crate.',
-                '❄️ Use o cooler AeroActive para resfriamento.',
-                '🔋 Carregue com o carregador original de 65W.',
-                '📶 Ative o modo Wi-Fi de baixa latência.'
-            ] },
-        { id: 'realmegt5', name: 'Realme GT 5', icon: '🚀', dpi: 640, tips: [
-                '🎮 Ative GT Mode nas configurações.',
-                '🔋 Desative economia de bateria e modo de leitura.',
-                '🖥️ Use 144Hz fixo para fluidez total.',
-                '📵 Game Focus Mode para bloquear notificações.',
-                '❄️ Evite luz solar direta no aparelho.',
-                '🧹 Limpe cache semanalmente nas configurações.'
-            ] },
-        { id: 'motorolaedge40', name: 'Motorola Edge 40', icon: '📴', dpi: 480, tips: [
-                '🎮 Ative o Modo Jogo da Motorola.',
-                '🖥️ Use 144Hz fixo, não adaptativo.',
-                '📵 Desative Digital Wellbeing e notificações.',
-                '🧹 Limpe cache do sistema a cada 3 dias.',
-                '🔋 Mantenha a bateria acima de 30%.',
-                '📶 Conecte ao Wi-Fi 5GHz para menor ping.'
-            ] },
-        { id: 'samsunga54', name: 'Samsung Galaxy A54', icon: '📲', dpi: 400, tips: [
-                '🖥️ Use resolução HD+ para mais FPS.',
-                '🎮 Game Booster no modo desempenho.',
-                '🧹 Desative animações do sistema nas opções dev.',
-                '🔄 Use 90Hz fixo nas configurações de tela.',
-                '❄️ Mantenha o aparelho longe de fontes de calor.',
-                '📶 Prefira 4G com sinal forte.'
-            ] },
-        { id: 'xiaomi13t', name: 'Xiaomi 13T Pro', icon: '📱', dpi: 600, tips: [
-                '🎮 Ative o Game Turbo e limpeza de RAM.',
-                '🖥️ 144Hz fixo e brilho automático desligado.',
-                '🔋 Desative economia de energia.',
-                '❄️ Use capa de proteção térmica.',
-                '📶 Wi-Fi 6 para latência mínima.',
-                '🔧 Ajuste sensibilidade touch no menu de desenvolvedor.'
-            ] },
-        { id: 'oneplus12', name: 'OnePlus 12', icon: '📱', dpi: 640, tips: [
-                '🎮 Ative o Modo Pro Gaming no OxygenOS.',
-                '🖥️ 120Hz adaptativo com resolução QHD+.',
-                '🔋 Desative otimizações de bateria para FF.',
-                '❄️ Use o cooler oficial OnePlus.',
-                '📶 Habilite Dual Wi-Fi Acceleration.',
-                '🧹 Limpe apps recentes antes de cada partida.'
-            ] },
-        { id: 'infinixturbo', name: 'Infinix GT 20 Pro', icon: '📱', dpi: 520, tips: [
-                '🎮 Ative o Modo Game Zone.',
-                '🖥️ Use 120Hz nativo sem limitações.',
-                '📵 Feche apps antes de abrir o jogo.',
-                '🔋 Carregue até 100% antes de jogar.',
-                '❄️ Mantenha o celular em superfície fria.',
-                '📶 Prefira rede 4G estável.'
-            ] },
-        { id: 'redminote13', name: 'Redmi Note 13 Pro+', icon: '📱', dpi: 480, tips: [
-                '🎮 Ative o Game Turbo e modo desempenho.',
-                '🖥️ 120Hz fixo na tela.',
-                '📵 Desative modo de leitura e brilho automático.',
-                '🧹 Limpeza de RAM antes do jogo.',
-                '📶 Use Wi-Fi 5GHz para ping baixo.',
-                '❄️ Evite capas muito grossas.'
-            ] },
-        { id: 'huaweip60', name: 'Huawei P60 Pro', icon: '📱', dpi: 520, tips: [
-                '🎮 Ative o AppAssistant para jogos.',
-                '🖥️ Use 120Hz e resolução adaptativa.',
-                '🔋 Desative otimização de bateria.',
-                '📶 Habilite Wi-Fi 6+ para máxima velocidade.',
-                '❄️ Use o modo desempenho com resfriamento passivo.',
-                '🧹 Limpe cache do sistema regularmente.'
-            ] },
-        { id: 'honor90', name: 'Honor 90', icon: '📱', dpi: 480, tips: [
-                '🎮 Ative o GPU Turbo no Game Center.',
-                '🖥️ 120Hz fixo com brilho constante.',
-                '📵 Desative notificações durante o jogo.',
-                '🔋 Modo desempenho ativado.',
-                '❄️ Evite uso enquanto carrega.',
-                '📶 Conecte ao Wi-Fi 5GHz.'
-            ] },
-        { id: 'lenovoy700', name: 'Lenovo Legion Y700', icon: '📱', dpi: 800, tips: [
-                '🎮 Ative o Modo Legião para jogos.',
-                '🖥️ Use 144Hz com resolução máxima.',
-                '❄️ Cooler integrado no modo máximo.',
-                '🔘 Mapeie botões físicos para ações rápidas.',
-                '🔋 Carregue com o adaptador original de 45W.',
-                '📶 Habilite rede dupla para estabilidade.'
-            ] },
-        { id: 'iqoo11', name: 'iQOO 11', icon: '📱', dpi: 640, tips: [
-                '🎮 Ative o Monster Mode para desempenho total.',
-                '🖥️ 144Hz com touch sampling 1200Hz.',
-                '❄️ Use o cooler interno no máximo.',
-                '🔋 Carregue com 120W FlashCharge.',
-                '📶 Habilite Wi-Fi 6.',
-                '🧹 Limpe apps recentes antes de jogar.'
-            ] },
-        { id: 'blackshark5', name: 'Black Shark 5 Pro', icon: '🦈', dpi: 720, tips: [
-                '🎮 Ative o Shark Space para jogos.',
-                '🔘 Use botões físicos pop-up.',
-                '👆 Touch sampling 720Hz.',
-                '❄️ Cooler ativo integrado.',
-                '🔋 Carregue com 120W HyperCharge.',
-                '📶 Habilite o modo de rede dual.'
-            ] },
-        { id: 'nubiaz50', name: 'Nubia Z50', icon: '📱', dpi: 640, tips: [
-                '🎮 Ative o Game Space com modo desempenho.',
-                '🖥️ 144Hz com resolução FHD+.',
-                '🔋 Desative economia de energia.',
-                '❄️ Use o cooler externo incluso.',
-                '📶 Wi-Fi 6E para latência zero.',
-                '🧹 Otimize memória no Game Space.'
-            ] },
-        { id: 'vivox90', name: 'Vivo X90 Pro', icon: '📱', dpi: 520, tips: [
-                '🎮 Ative o Ultra Game Mode.',
-                '🖥️ 120Hz com taxa de atualização fixa.',
-                '🔋 Desative otimização de bateria.',
-                '📶 Habilite Dual Wi-Fi Acceleration.',
-                '❄️ Use o modo de resfriamento líquido.',
-                '📵 Silencie notificações automaticamente.'
-            ] },
-        { id: 'oppofindx6', name: 'Oppo Find X6 Pro', icon: '📱', dpi: 560, tips: [
-                '🎮 Ative o Game Focus Mode.',
-                '🖥️ 120Hz dinâmico com QHD+.',
-                '🔋 Desative economia de energia.',
-                '📶 Habilite LinkBoost para rede estável.',
-                '❄️ Use capa de proteção térmica.',
-                '🧹 Limpe cache de apps recentes.'
-            ] },
-        { id: 'xiaomi14', name: 'Xiaomi 14', icon: '📱', dpi: 600, tips: [
-                '🎮 Game Turbo com HyperOS otimizado.',
-                '🖥️ 120Hz LTPO com brilho máximo.',
-                '🔋 Desative restrições de bateria.',
-                '❄️ Resfriamento com câmara de vapor.',
-                '📶 Wi-Fi 7 para latência mínima.',
-                '🧹 Limpeza profunda de RAM.'
-            ] },
-        { id: 'galaxya35', name: 'Samsung Galaxy A35', icon: '📱', dpi: 400, tips: [
-                '🎮 Game Booster no modo desempenho.',
-                '🖥️ Use 90Hz e resolução HD+.',
-                '🔋 Desative economia de energia.',
-                '📵 Bloqueie notificações durante o jogo.',
-                '❄️ Mantenha em local ventilado.',
-                '📶 Prefira Wi-Fi 5GHz.'
-            ] },
-        { id: 'pocof5', name: 'Poco F5', icon: '📱', dpi: 520, tips: [
-                '🎮 Game Turbo com modo Wild Boost.',
-                '🖥️ 120Hz AMOLED fixo.',
-                '🔋 Carregue com 67W antes de jogar.',
-                '❄️ Resfriamento com grafite.',
-                '📶 Habilite rede 5G para baixo ping.',
-                '🧹 Limpeza de RAM automática.'
-            ] },
-        { id: 'realmegtneo5', name: 'Realme GT Neo 5', icon: '📱', dpi: 600, tips: [
-                '🎮 GT Mode 4.0 ativado.',
-                '🖥️ 144Hz com touch 1500Hz.',
-                '🔋 Carregue com 150W SuperDart.',
-                '❄️ Cooler externo recomendado.',
-                '📶 Wi-Fi 6 com canal dedicado.',
-                '🧹 Otimize com um toque no Game Space.'
-            ] },
-    ];
+        const estilos = [
+            { id: 'allround', name: '🔄 All-Rounder', mod: 1.0 },
+            { id: 'rusher', name: '⚡ Rusher', mod: 1.4 },
+            { id: 'sniper', name: '🎯 Sniper', mod: 0.7 },
+            { id: 'suporte', name: '🛡️ Suporte', mod: 0.85 },
+        ];
 
-    const presets = {
-        pro: { geral: 95, redDot: 90, mira2x: 85, mira4x: 75, mira8x: 55, gyro: 70, fireBtn: 80, name: 'Pro Player' },
-        rush: { geral: 130, redDot: 120, mira2x: 110, mira4x: 90, mira8x: 60, gyro: 85, fireBtn: 110, name: 'Rush Agressivo' },
-        sniper: { geral: 60, redDot: 55, mira2x: 50, mira4x: 65, mira8x: 90, gyro: 95, fireBtn: 45, name: 'Sniper Precisão' },
-        equilibrada: { geral: 80, redDot: 75, mira2x: 70, mira4x: 65, mira8x: 50, gyro: 60, fireBtn: 70, name: 'Equilibrada' },
-        tournament: { geral: 100, redDot: 95, mira2x: 88, mira4x: 78, mira8x: 62, gyro: 75, fireBtn: 85, name: 'Tournament' },
-        extreme: { geral: 150, redDot: 140, mira2x: 130, mira4x: 100, mira8x: 70, gyro: 100, fireBtn: 130, name: 'Extreme Rush' },
-        economy: { geral: 50, redDot: 45, mira2x: 40, mira4x: 35, mira8x: 30, gyro: 40, fireBtn: 40, name: 'Economy' },
-        custom: { geral: 95, redDot: 90, mira2x: 85, mira4x: 75, mira8x: 55, gyro: 70, fireBtn: 80, name: 'Custom' },
-    };
+        let currentPhone = phoneModels[0];
+        let currentEstilo = estilos[0];
+        let currentDPI = 560;
+        let sensiGerada = null;
+        let tentativas = 0;
+        let blockTimer = null;
+        let blockSeconds = 20;
 
-    const estiloModifiers = {
-        allround: { name: 'All-Rounder', icon: '🔄', mod: 1.0 },
-        rusher: { name: 'Rusher', icon: '⚡', mod: 1.3 },
-        sniper: { name: 'Sniper', icon: '🎯', mod: 0.8 },
-        suporte: { name: 'Suporte', icon: '🛡️', mod: 0.9 },
-    };
+        const USER = 'TK KORINGA';
+        const PASS = '001';
 
-    let currentPreset = 'pro';
-    let currentPhone = phoneModels[0];
-    let currentDPI = 560;
-    let currentEstilo = 'allround';
-    let tentativasFalhas = 0;
-    const MAX_TENTATIVAS = 3;
-    const USERNAME_CORRETO = 'TK SENSI PRO';
-    const SENHA_CORRETA = 'tkk';
+        function handleLogin() {
+            const user = document.getElementById('loginUser').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
+            const error = document.getElementById('loginError');
+            const blockMsg = document.getElementById('bloqueadoMsg');
+            const tempBlock = document.getElementById('temporizadorBlock');
+            const skipBtn = document.getElementById('skipLoginBtn');
 
-    // ==================== LOGIN ====================
-    function handleLogin() {
-        const userInput = document.getElementById('loginUser').value.trim();
-        const passInput = document.getElementById('loginPass').value.trim();
-        const errorEl = document.getElementById('loginError');
-        const bloqueadoMsg = document.getElementById('bloqueadoMsg');
-        const skipBtn = document.getElementById('skipLoginBtn');
-
-        if (tentativasFalhas >= MAX_TENTATIVAS) {
-            errorEl.textContent = '⛔ Bloqueado! Use o botão abaixo.';
-            bloqueadoMsg.classList.add('show');
-            skipBtn.classList.add('show');
-            updateTentativasDots();
-            return;
-        }
-
-        if (userInput === USERNAME_CORRETO && passInput === SENHA_CORRETA) {
-            errorEl.textContent = '';
-            bloqueadoMsg.classList.remove('show');
-            skipBtn.classList.remove('show');
-            tentativasFalhas = 0;
-            updateTentativasDots();
-            document.getElementById('loginOverlay').classList.add('hidden');
-            document.querySelectorAll('#tentativasDots .dot').forEach(d => d.classList.remove('failed'));
-        } else {
-            tentativasFalhas++;
-            updateTentativasDots();
-            if (tentativasFalhas >= MAX_TENTATIVAS) {
-                errorEl.textContent = '⛔ Número máximo de tentativas atingido!';
-                bloqueadoMsg.classList.add('show');
+            if (tentativas >= 5) {
+                blockMsg.classList.add('show');
+                tempBlock.classList.add('show');
                 skipBtn.classList.add('show');
+                iniciarTemporizador();
+                return;
+            }
+
+            if (user === USER && pass === PASS) {
+                document.getElementById('loginOverlay').classList.add('hidden');
+                document.getElementById('mainApp').style.display = 'block';
+                initApp();
             } else {
-                const restantes = MAX_TENTATIVAS - tentativasFalhas;
-                errorEl.textContent = '❌ Usuário ou senha incorretos! (' + restantes + ' tentativa' + (restantes > 1 ? 's' :
-                    '') + ' restante' + (restantes > 1 ? 's' : '') + ')';
+                tentativas++;
+                updateDots();
+                if (tentativas >= 5) {
+                    error.textContent = 'Bloqueado! 5 tentativas erradas.';
+                    blockMsg.classList.add('show');
+                    tempBlock.classList.add('show');
+                    skipBtn.classList.add('show');
+                    iniciarTemporizador();
+                } else {
+                    error.textContent = `Erro! ${5 - tentativas} tentativa(s) restante(s).`;
+                }
             }
         }
-    }
 
-    function updateTentativasDots() {
-        const dots = [document.getElementById('dot1'), document.getElementById('dot2'), document.getElementById(
-        'dot3')];
-        dots.forEach((dot, i) => {
-            if (i < tentativasFalhas) dot.classList.add('failed');
-            else dot.classList.remove('failed');
-        });
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && !document.getElementById('loginOverlay').classList.contains('hidden')) {
-            handleLogin();
+        function updateDots() {
+            for (let i = 1; i <= 5; i++) {
+                document.getElementById('dot' + i).classList.toggle('failed', i <= tentativas);
+            }
         }
-    });
 
-    // ==================== RENDERIZAR CELULARES ====================
-    function renderPhones() {
-        const grid = document.getElementById('phoneGrid');
-        grid.innerHTML = phoneModels.map(p => `
-                <div class="phone-card ${p.id === currentPhone.id ? 'active' : ''}"
-                onclick="selectPhone('${p.id}')" title="${p.name}">
-                <div class="phone-icon">${p.icon}</div>
-                <div class="phone-name">${p.name}</div>
-                <div class="phone-dpi">DPI Rec: ${p.dpi}</div>
+        function iniciarTemporizador() {
+            let sec = blockSeconds;
+            const tempEl = document.getElementById('temporizadorBlock');
+            tempEl.textContent = `Aguarde ${sec} segundos...`;
+            if (blockTimer) clearInterval(blockTimer);
+            blockTimer = setInterval(() => {
+                sec--;
+                tempEl.textContent = `Aguarde ${sec} segundos...`;
+                if (sec <= 0) {
+                    clearInterval(blockTimer);
+                    tentativas = 0;
+                    updateDots();
+                    document.getElementById('bloqueadoMsg').classList.remove('show');
+                    document.getElementById('temporizadorBlock').classList.remove('show');
+                    document.getElementById('skipLoginBtn').classList.remove('show');
+                    document.getElementById('loginError').textContent = '';
+                }
+            }, 1000);
+        }
+
+        function initApp() {
+            renderPhones();
+            renderEstilos();
+            updateSliders();
+            updateTiroSize();
+            checkUpdateAlert();
+        }
+
+        function checkUpdateAlert() {
+            const last = localStorage.getItem('tk_last_update_alert');
+            const now = Date.now();
+            if (!last || (now - parseInt(last)) > 172800000) {
+                document.getElementById('updateAlert').style.display = 'block';
+                localStorage.setItem('tk_last_update_alert', now.toString());
+            }
+        }
+
+        function renderPhones() {
+            const grid = document.getElementById('phoneGrid');
+            grid.innerHTML = phoneModels.map(p => `
+                <div class="phone-card ${p.id === currentPhone.id ? 'active' : ''}" onclick="selectPhone('${p.id}')">
+                    📱 ${p.name}<br><small>DPI: ${p.dpi}</small>
                 </div>
             `).join('');
-    }
-
-    function selectPhone(phoneId) {
-        currentPhone = phoneModels.find(p => p.id === phoneId) || phoneModels[0];
-        currentDPI = currentPhone.dpi;
-        renderPhones();
-        updateDpiButtons();
-        updateDpiInfo();
-        updateResumo();
-        updateDicasPanel();
-        updateDicasRapidas();
-    }
-
-    // ==================== DPI ====================
-    function updateDpiButtons() {
-        document.querySelectorAll('#dpiSelector .dpi-btn').forEach(btn => {
-            btn.classList.toggle('active-dpi', parseInt(btn.dataset.dpi) === currentDPI);
-        });
-    }
-
-    function updateDpiInfo() {
-        document.getElementById('dpiAtual').textContent = currentDPI;
-        document.getElementById('dpiRecomendado').textContent = currentPhone.name;
-        document.getElementById('resDPI').textContent = currentDPI;
-        document.getElementById('resCelular').textContent = currentPhone.name;
-    }
-
-    document.getElementById('dpiSelector').addEventListener('click', function(e) {
-        if (e.target.classList.contains('dpi-btn')) {
-            currentDPI = parseInt(e.target.dataset.dpi);
-            updateDpiButtons();
-            updateDpiInfo();
-            updateResumo();
         }
-    });
 
-    // ==================== ESTILO DE JOGO ====================
-    function updateEstiloButtons() {
-        document.querySelectorAll('#estiloSelector .estilo-btn').forEach(btn => {
-            btn.classList.toggle('active-estilo', btn.dataset.estilo === currentEstilo);
-        });
-        document.getElementById('resEstilo').textContent = estiloModifiers[currentEstilo].name;
-    }
-
-    document.getElementById('estiloSelector').addEventListener('click', function(e) {
-        if (e.target.classList.contains('estilo-btn')) {
-            currentEstilo = e.target.dataset.estilo;
-            updateEstiloButtons();
-            applyEstiloModifier();
-            updateResumo();
+        function selectPhone(id) {
+            currentPhone = phoneModels.find(p => p.id === id);
+            currentDPI = currentPhone.dpi;
+            document.getElementById('sliderDPI').value = currentDPI;
+            updateSliders();
+            renderPhones();
         }
-    });
 
-    function applyEstiloModifier() {
-        const mod = estiloModifiers[currentEstilo].mod;
-        const basePreset = presets[currentPreset] || presets['pro'];
-        document.getElementById('sliderGeral').value = Math.round(basePreset.geral * mod);
-        document.getElementById('sliderRedDot').value = Math.round(basePreset.redDot * mod);
-        document.getElementById('sliderMira2x').value = Math.round(basePreset.mira2x * mod);
-        document.getElementById('sliderMira4x').value = Math.round(basePreset.mira4x * mod);
-        document.getElementById('sliderMira8x').value = Math.round(basePreset.mira8x * mod);
-        document.getElementById('sliderGyro').value = Math.round(basePreset.gyro * mod);
-        document.getElementById('sliderFireBtn').value = Math.round(basePreset.fireBtn * mod);
-        updateSliders();
-    }
-
-    // ==================== PRESETS ====================
-    function applyPreset(presetKey) {
-        if (presetKey === 'custom') {
-            currentPreset = 'custom';
-            updatePresetButtons();
-            return;
-        }
-        const p = presets[presetKey];
-        if (!p) return;
-        currentPreset = presetKey;
-        const mod = estiloModifiers[currentEstilo].mod;
-        document.getElementById('sliderGeral').value = Math.round(p.geral * mod);
-        document.getElementById('sliderRedDot').value = Math.round(p.redDot * mod);
-        document.getElementById('sliderMira2x').value = Math.round(p.mira2x * mod);
-        document.getElementById('sliderMira4x').value = Math.round(p.mira4x * mod);
-        document.getElementById('sliderMira8x').value = Math.round(p.mira8x * mod);
-        document.getElementById('sliderGyro').value = Math.round(p.gyro * mod);
-        document.getElementById('sliderFireBtn').value = Math.round(p.fireBtn * mod);
-        updateSliders();
-        updatePresetButtons();
-    }
-
-    function updatePresetButtons() {
-        document.querySelectorAll('#presetButtons .preset-btn').forEach(btn => {
-            btn.classList.toggle('active-preset', btn.dataset.preset === currentPreset);
-        });
-    }
-
-    document.getElementById('presetButtons').addEventListener('click', function(e) {
-        if (e.target.classList.contains('preset-btn')) {
-            applyPreset(e.target.dataset.preset);
-        }
-    });
-
-    // ==================== SLIDERS ====================
-    function updateSliders() {
-        const geral = parseInt(document.getElementById('sliderGeral').value);
-        const redDot = parseInt(document.getElementById('sliderRedDot').value);
-        const mira2x = parseInt(document.getElementById('sliderMira2x').value);
-        const mira4x = parseInt(document.getElementById('sliderMira4x').value);
-        const mira8x = parseInt(document.getElementById('sliderMira8x').value);
-        const gyro = parseInt(document.getElementById('sliderGyro').value);
-        const fireBtn = parseInt(document.getElementById('sliderFireBtn').value);
-
-        document.getElementById('valGeral').textContent = geral;
-        document.getElementById('valRedDot').textContent = redDot;
-        document.getElementById('valMira2x').textContent = mira2x;
-        document.getElementById('valMira4x').textContent = mira4x;
-        document.getElementById('valMira8x').textContent = mira8x;
-        document.getElementById('valGyro').textContent = gyro;
-        document.getElementById('valFireBtn').textContent = fireBtn;
-
-        document.getElementById('resGeral').textContent = geral;
-        document.getElementById('resRedDot').textContent = redDot;
-        document.getElementById('resMira2x').textContent = mira2x;
-        document.getElementById('resMira4x').textContent = mira4x;
-        document.getElementById('resMira8x').textContent = mira8x;
-        document.getElementById('resGyro').textContent = gyro;
-        document.getElementById('resFireBtn').textContent = fireBtn;
-
-        const matchedPreset = Object.entries(presets).find(([key, p]) => {
-            if (key === 'custom') return false;
-            const mod = estiloModifiers[currentEstilo].mod;
-            return Math.round(p.geral * mod) === geral && Math.round(p.redDot * mod) === redDot &&
-                Math.round(p.mira2x * mod) === mira2x && Math.round(p.mira4x * mod) === mira4x &&
-                Math.round(p.mira8x * mod) === mira8x && Math.round(p.gyro * mod) === gyro &&
-                Math.round(p.fireBtn * mod) === fireBtn;
-        });
-        currentPreset = matchedPreset ? matchedPreset[0] : 'custom';
-        updatePresetButtons();
-        updateResumo();
-    }
-
-    function updateResumo() {
-        document.getElementById('resDPI').textContent = currentDPI;
-        document.getElementById('resCelular').textContent = currentPhone.name;
-        document.getElementById('resEstilo').textContent = estiloModifiers[currentEstilo].name;
-        document.getElementById('dpiAtual').textContent = currentDPI;
-        document.getElementById('dpiRecomendado').textContent = currentPhone.name;
-    }
-
-    // ==================== COPIAR ====================
-    function copiarConfig() {
-        const geral = document.getElementById('sliderGeral').value;
-        const redDot = document.getElementById('sliderRedDot').value;
-        const mira2x = document.getElementById('sliderMira2x').value;
-        const mira4x = document.getElementById('sliderMira4x').value;
-        const mira8x = document.getElementById('sliderMira8x').value;
-        const gyro = document.getElementById('sliderGyro').value;
-        const fireBtn = document.getElementById('sliderFireBtn').value;
-
-        const configText = `
-        ╔══════════════════════════════╗
-        ║  🔥 TK SENSI PRO v4.0       ║
-        ║  Configuração Premium       ║
-        ║  Free Fire                  ║
-        ╚══════════════════════════════╝
-        📱 Celular: ${currentPhone.name}
-        🎮 Estilo: ${estiloModifiers[currentEstilo].name}
-        🖱️ DPI: ${currentDPI}
-        🏷️ Preset: ${presets[currentPreset]?.name || 'Custom'}
-
-        ▸ 🔫 Sensibilidade Principal: ${geral}
-        ▸ 🔴 Red Dot / Mira 1x: ${redDot}
-        ▸ 🟠 Mira 2x: ${mira2x}
-        ▸ 🟡 Mira 4x: ${mira4x}
-        ▸ 🟢 Mira 8x / Sniper: ${mira8x}
-        ▸ 🔄 Giroscópio: ${gyro}
-        ▸ 👆 Botão de Tiro: ${fireBtn}
-
-        🔥 Dicas Premium TK KORINGA:
-        ${currentPhone.tips.map((t, i) => (i + 1) + '. ' + t).join('\n')}
-
-        📺 Canal: youtube.com/@TKKORINGA
-        `.trim();
-
-        navigator.clipboard.writeText(configText).then(() => {
-            showToast('✅ Configuração PRO copiada com sucesso!');
-        }).catch(() => {
-            const ta = document.createElement('textarea');
-            ta.value = configText;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            showToast('✅ Configuração PRO copiada!');
-        });
-    }
-
-    function showToast(msg) {
-        const existing = document.querySelector('.copied-toast');
-        if (existing) existing.remove();
-        const toast = document.createElement('div');
-        toast.className = 'copied-toast';
-        toast.textContent = msg;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 2200);
-    }
-
-    // ==================== DICAS PANEL ====================
-    function updateDicasPanel() {
-        const content = document.getElementById('dicasContent');
-        const allTips = currentPhone.tips;
-        const extraTips = [
-            '🎯 Ajuste a sensibilidade aos poucos — baixe 5 pontos por vez até achar o ideal.',
-            '🔄 Reinicie o celular antes de sessões competitivas para limpar cache.',
-            '🔋 Mantenha a bateria acima de 20% para evitar throttling.',
-            '📵 Desative notificações e chamadas durante o jogo.',
-            '🎧 Use fones com baixa latência (aptX ou USB-C).',
-            '🧊 Evite capas grossas que retêm calor.',
-            '📡 Prefira servidores com menor ping.',
-            '🧹 Limpe o cache do Free Fire regularmente.',
-            '🔧 Atualize os drivers gráficos do celular se disponível.',
-        ];
-        const allDicas = [...allTips, ...extraTips];
-        content.innerHTML = allDicas.map((t, i) => `
-                <div class="dica-item">
-                <div class="dica-title">${t}</div>
-                <span class="dica-tag">Dica #${i + 1}</span>
-                </div>
+        function renderEstilos() {
+            const container = document.getElementById('estiloBtns');
+            container.innerHTML = estilos.map(e => `
+                <button class="preset-btn ${e.id === currentEstilo.id ? 'active-preset' : ''}" 
+                        onclick="selectEstilo('${e.id}')"
+                        style="background:${e.id===currentEstilo.id?'#00AFFF':'var(--bg-card2)'};
+                               border:1.5px solid ${e.id===currentEstilo.id?'#00AFFF':'var(--border)'};
+                               color:${e.id===currentEstilo.id?'#000':'var(--text)'};
+                               padding:7px 14px; border-radius:22px; cursor:pointer; font-weight:600;
+                               font-size:0.74em; transition:0.3s; letter-spacing:0.5px;">
+                    ${e.name}
+                </button>
             `).join('');
-    }
-
-    function openDicas() {
-        updateDicasPanel();
-        document.getElementById('dicasPanel').classList.add('open');
-        document.getElementById('dicasBackdrop').classList.add('show');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeDicas() {
-        document.getElementById('dicasPanel').classList.remove('open');
-        document.getElementById('dicasBackdrop').classList.remove('show');
-        document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && document.getElementById('dicasPanel').classList.contains('open')) {
-            closeDicas();
         }
-    });
 
-    // ==================== DICAS RÁPIDAS ====================
-    function updateDicasRapidas() {
-        const container = document.getElementById('dicasRapidas');
-        const tipsRapidas = [
-            { title: '🧹 Limpeza de RAM',
-                text: 'Feche apps em segundo plano antes de jogar. Use o Game Booster nativo do seu ' + currentPhone
-                .name + '.', tag: 'Performance' },
-            { title: '📶 Conexão Estável',
-                text: 'Prefira Wi-Fi 5GHz/6 ou 4G/5G com boa latência. Evite Bluetooth ativo.', tag: 'Rede' },
-            { title: '👆 Sensibilidade Touch',
-                text: 'Aumente a sensibilidade do touch nas configurações do sistema para respostas mais rápidas.',
-                tag: 'Touch' },
-            { title: '❄️ Temperatura',
-                text: 'Mantenha o ' + currentPhone.name +
-                ' resfriado. Superaquecimento causa throttling e queda de FPS.', tag: 'Hardware' },
-            { title: '🔋 Bateria', text: 'Carregue até 80-100% antes de jogar e evite jogar enquanto carrega.',
-                tag: 'Energia' },
-            { title: '🎧 Áudio', text: 'Use fones com cancelamento de ruído para identificar passos com precisão.',
-                tag: 'Áudio' },
-        ];
-        container.innerHTML = tipsRapidas.map(t => `
-                <div class="dica-item">
-                <div class="dica-title">${t.title}</div>
-                <div class="dica-text">${t.text}</div>
-                <span class="dica-tag">${t.tag}</span>
-                </div>
+        function selectEstilo(id) {
+            currentEstilo = estilos.find(e => e.id === id);
+            renderEstilos();
+            aplicarModificador();
+        }
+
+        function aplicarModificador() {
+            const mod = currentEstilo.mod;
+            document.getElementById('sliderGeral').value = Math.round(95 * mod);
+            document.getElementById('sliderRedDot').value = Math.round(85 * mod);
+            document.getElementById('slider2x').value = Math.round(80 * mod);
+            document.getElementById('slider4x').value = Math.round(70 * mod);
+            document.getElementById('sliderAWM').value = Math.round(50 * mod);
+            document.getElementById('sliderOlhadinha').value = Math.round(60 * mod);
+            document.getElementById('sliderTouch').value = Math.round(90 * mod);
+            updateSliders();
+        }
+
+        function updateSliders() {
+            document.getElementById('valGeral').textContent = document.getElementById('sliderGeral').value;
+            document.getElementById('valRedDot').textContent = document.getElementById('sliderRedDot').value;
+            document.getElementById('val2x').textContent = document.getElementById('slider2x').value;
+            document.getElementById('val4x').textContent = document.getElementById('slider4x').value;
+            document.getElementById('valAWM').textContent = document.getElementById('sliderAWM').value;
+            document.getElementById('valOlhadinha').textContent = document.getElementById('sliderOlhadinha').value;
+            document.getElementById('valTouch').textContent = document.getElementById('sliderTouch').value;
+            document.getElementById('valDPI').textContent = document.getElementById('sliderDPI').value;
+            currentDPI = parseInt(document.getElementById('sliderDPI').value);
+            updateTiroSize();
+        }
+
+        function updateTiroSize() {
+            const val = document.getElementById('sliderTiroSize').value;
+            document.getElementById('valTiroSize').textContent = val + '%';
+            const size = val * 0.8;
+            document.getElementById('tiroPreview').style.width = size + 'px';
+            document.getElementById('tiroPreview').style.height = size + 'px';
+        }
+
+        function quickGenerate() {
+            currentEstilo = estilos[0];
+            renderEstilos();
+            currentDPI = currentPhone.dpi;
+            document.getElementById('sliderDPI').value = currentDPI;
+            aplicarModificador();
+            document.getElementById('sliderTiroSize').value = 60;
+            updateTiroSize();
+            updateSliders();
+            gerarSensi();
+        }
+
+        function gerarSensi() {
+            const geral = document.getElementById('sliderGeral').value;
+            const redDot = document.getElementById('sliderRedDot').value;
+            const mira2x = document.getElementById('slider2x').value;
+            const mira4x = document.getElementById('slider4x').value;
+            const awm = document.getElementById('sliderAWM').value;
+            const olhadinha = document.getElementById('sliderOlhadinha').value;
+            const touch = document.getElementById('sliderTouch').value;
+            const tiroSize = document.getElementById('sliderTiroSize').value;
+            const dpi = document.getElementById('sliderDPI').value;
+
+            sensiGerada = { celular: currentPhone.name, estilo: currentEstilo.name, dpi, geral, redDot,
+                mira2x, mira4x, awm, olhadinha, touch, tiroSize };
+
+            document.getElementById('resCelular').textContent = sensiGerada.celular;
+            document.getElementById('resEstilo').textContent = sensiGerada.estilo;
+            document.getElementById('resDPI').textContent = dpi;
+            document.getElementById('resGeral').textContent = geral;
+            document.getElementById('resRedDot').textContent = redDot;
+            document.getElementById('res2x').textContent = mira2x;
+            document.getElementById('res4x').textContent = mira4x;
+            document.getElementById('resAWM').textContent = awm;
+            document.getElementById('resOlhadinha').textContent = olhadinha;
+            document.getElementById('resTouch').textContent = touch;
+            document.getElementById('resTiroSize').textContent = tiroSize + '%';
+
+            const valores = [geral, redDot, mira2x, mira4x, awm, olhadinha, touch, tiroSize * 2];
+            const iaDiv = document.getElementById('iaCanvas');
+            iaDiv.innerHTML = valores.map(v => {
+                const h = Math.min(180, (v / 200) * 180);
+                return `<div class="bar" style="height:${h}px; width:16px;"></div>`;
+            }).join('');
+
+            document.getElementById('resultadoArea').style.display = 'block';
+            document.getElementById('resultadoArea').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copiarSensi() {
+            if (!sensiGerada) return;
+            const texto = `
+        TK SENSI PRO - Configuracao IA
+        Celular: ${sensiGerada.celular}
+        Estilo: ${sensiGerada.estilo}
+        DPI: ${sensiGerada.dpi}
+        Geral: ${sensiGerada.geral}
+        Red Dot: ${sensiGerada.redDot}
+        2x: ${sensiGerada.mira2x}
+        4x: ${sensiGerada.mira4x}
+        AWM: ${sensiGerada.awm}
+        Olhadinha: ${sensiGerada.olhadinha}
+        Velocidade de Toque: ${sensiGerada.touch}
+        Botao de Tiro: ${sensiGerada.tiroSize}%
+            `.trim();
+            navigator.clipboard.writeText(texto).then(() => showToast('Sensi copiada!'));
+        }
+
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        function showHome() {
+            document.getElementById('homeScreen').style.display = 'block';
+            document.getElementById('geradorScreen').style.display = 'none';
+            document.getElementById('resultadoArea').style.display = 'none';
+        }
+
+        function showGerador() {
+            document.getElementById('homeScreen').style.display = 'none';
+            document.getElementById('geradorScreen').style.display = 'block';
+            document.getElementById('resultadoArea').style.display = 'none';
+            renderPhones();
+            renderEstilos();
+        }
+
+        function showNovidades() {
+            alert('Novidades: Atualizacoes a cada 2 dias. Novos recursos em breve!');
+        }
+
+        function openDicas() {
+            const dicas = [
+                'Desative animacoes do sistema nas Opcoes do Desenvolvedor (reduz latencia).',
+                'Use Game Turbo / Game Space para priorizar o jogo na CPU/GPU.',
+                'Mantenha a tela sempre em 60Hz ou 90Hz fixo para consistencia.',
+                'Limpe o cache do Free Fire semanalmente.',
+                'Desative o Bluetooth e apps de segundo plano antes de jogar.',
+                'Utilize carregador original para evitar oscilacao de energia.',
+                'Evite capas grossas que retem calor durante o jogo.',
+                'Prefira Wi-Fi 5GHz ou 6 para menor ping.',
+                'Use fones com baixa latencia (aptX ou USB-C).',
+            ];
+            const content = document.getElementById('dicasContent');
+            content.innerHTML = dicas.map((d, i) => `
+                <p style="border-left:3px solid #00AFFF; padding:8px 10px; margin:8px 0; background:var(--bg-card2); border-radius:6px; font-size:0.78em; color:var(--text2);">
+                <strong style="color:#00AFFF;">Dica ${i+1}:</strong> ${d}
+                </p>
             `).join('');
-    }
+            document.getElementById('dicasPanel').classList.add('open');
+            document.getElementById('dicasBackdrop').classList.add('show');
+        }
 
-    // ==================== INICIALIZAÇÃO ====================
-    function init() {
-        renderPhones();
-        updateDpiButtons();
-        updateDpiInfo();
-        updateEstiloButtons();
-        updateSliders();
-        updatePresetButtons();
-        updateDicasPanel();
-        updateDicasRapidas();
-        updateResumo();
-        applyPreset('pro');
-    }
+        function closeDicas() {
+            document.getElementById('dicasPanel').classList.remove('open');
+            document.getElementById('dicasBackdrop').classList.remove('show');
+        }
 
-    init();
-    document.getElementById('loginUser').focus();
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !document.getElementById('loginOverlay').classList.contains('hidden')) {
+                handleLogin();
+            }
+        });
 
-    console.log('🔥 TK SENSI PRO v4.0 — Gerador Premium de Sensibilidade Free Fire');
-    console.log('📱 24 modelos de celular • Dicas Premium • Estilos de Jogo');
-    console.log('📺 Canal: TK KORINGA');
-</script>
+        console.log('TK SENSI PRO — Futurista Gamer Premium carregado.');
+    </script>
 </body>
 </html>
